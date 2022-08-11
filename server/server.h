@@ -11,7 +11,6 @@
 #include "classifier/flower/flower.h"
 
 class Server {
-
     private:
         int server_port;
         int server_socket;
@@ -19,9 +18,9 @@ class Server {
 
     public:
         Server(int port);
-        FlowerPoint& receiveFlowerPoint();
-        void sendClassification(Flower& flower);
-        void close();
+        FlowerPoint& receiveFlowerPoint() const;
+        void sendClassification(Flower& flower) const;
+        void closeSever() const;
 };
 
 #endif //ASS_TWO_SERVER_H
