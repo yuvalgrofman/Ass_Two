@@ -1,9 +1,9 @@
 #ifndef ASS_ONE_DATA_SPACE_CREATOR_H
 #define ASS_ONE_DATA_SPACE_CREATOR_H
 
-#include "flower/flower.h"
+#include "classifier/flower/flower.h"
 #include "dataSpace.h"
-#include "flower/flowerReader.h"
+#include "classifier/flower/flowerReader.h"
 #include <vector>
 
 /**

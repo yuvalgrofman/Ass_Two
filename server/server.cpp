@@ -1,8 +1,16 @@
 #include "server/server.h"
 #include "classifier/flower/flowerReader.h"
+#include "classifier/distances/euclideanDistance.h"
+#include "classifier/flower/flowerType.h"
 
 Server::Server(int server_port) {
     this->server_port = server_port;
+
+    FlowerReader &classifiedReader = *(new FlowerReader("data/flower_data.csv"));
+    DataSpaceCreator creator = DataSpaceCreator(classifiedReader);
+    dataSpace = &creator.makeDataSpace();
+
+    delete &classifiedReader;
 
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (server_socket < 0) {
@@ -48,6 +56,20 @@ FlowerPoint& Server::receiveFlowerPoint() const {
     }
 }
 
-void Server::closeSever() const {
+void Server::sendClassification(FlowerPoint &flower, int k) {
+    FlowerType type = dataSpace->predict(k, flower, *(new EuclideanDistance()));
+
+    char buffer[4096];
+
+    strcpy(buffer,  FlowerTypeToString(type).c_str());
+
+    int sent_bytes = send(client_sock, buffer, BUFFER_SIZE, 0);
+
+    if (sent_bytes < 0) {
+        perror("error sending to client");
+    }
+}
+
+void Server::closeServer() const {
     close(server_socket);
 }

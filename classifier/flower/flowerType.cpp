@@ -16,3 +16,16 @@ std::ostream& operator<<(std::ostream& os, const FlowerType type) {
     }
     return os;
 }
+
+std::string FlowerTypeToString(FlowerType type) {
+    switch(type){
+        case FlowerType::SETOSA:
+            return "Iris-setosa";
+        case FlowerType::VIRGINICA:
+            return "Iris-virginica";
+        case FlowerType::VERSICOLOR:
+            return "Iris-versicolor";
+        default:
+            return "UNKNOWN";
+    }
+}

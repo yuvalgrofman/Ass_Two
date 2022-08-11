@@ -2,7 +2,7 @@
 #define ASS_ONE_SORT_FLOWER_LIST_H
 
 #include "flower.h"
-#include "distances/distance.h"
+#include "classifier/distances/distance.h"
 
 /**
  * @brief The FlowerSorter class

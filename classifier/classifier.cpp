@@ -39,6 +39,10 @@ void Classifier::predictFileByDist(const string &outputFile, Distance &distance)
     outfile.close();
 }
 
+FlowerType Classifier::classify(FlowerPoint &flowerPoint, Distance &distance) {
+    return dataSpace->predict(k, flowerPoint, distance);
+}
+
 Classifier::~Classifier() {
     delete dataSpace;
     for (FlowerPoint *flowerPoint : *unclassifiedFLowers) {

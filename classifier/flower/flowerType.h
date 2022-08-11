@@ -25,4 +25,6 @@ const int NUM_FLOWER_TYPES = 3;
  */
 std::ostream& operator<<(std::ostream& os, const FlowerType type);
 
+std::string FlowerTypeToString(FlowerType type);
+
 #endif //ASS_ONE_FLOWER_TYPE_H

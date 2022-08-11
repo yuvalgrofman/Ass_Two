@@ -46,6 +46,14 @@ class Classifier {
         void classify();
 
         /**
+         * Classifies the given flower point.
+         * @param flowerPoint  given flower point.
+         * @param distance given distance metric.
+         * @return  predicted flower type.
+         */
+        FlowerType classify(FlowerPoint& flowerPoint, Distance& distance);
+
+        /**
          * Destructor.
          */
         ~Classifier();
