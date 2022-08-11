@@ -1,5 +1,5 @@
 #include "server/server.h"
-#include "classifier/flower/flowerDetector.h"
+#include "classifier/flower/flowerReader.h"
 
 Server::Server(int server_port) {
     this->server_port = server_port;
