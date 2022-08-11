@@ -8,10 +8,20 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <string.h>
+#include "classifier/flower/flower.h"
 
 class Server {
 
-public:
+    private:
+        int server_port;
+        int server_socket;
+        int client_sock;
+
+    public:
+        Server(int port);
+        FlowerPoint& receiveFlowerPoint();
+        void sendClassification(Flower& flower);
+        void close();
 };
 
 #endif //ASS_TWO_SERVER_H

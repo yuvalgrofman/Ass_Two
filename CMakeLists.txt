@@ -30,4 +30,4 @@ add_executable(AssTwo.out
         classifier/classifier.h
         classifier/flower/flowerSorter.h
         classifier/flower/flowerSorter.cpp
-        server/server.h)
+        server/server.h server/server.cpp classifier/flower/flowerDetector.cpp classifier/flower/flowerDetector.h)
