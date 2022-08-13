@@ -29,6 +29,7 @@ class Server {
         void sendClassification(FlowerPoint& flower, int k, Distance* distance);
         void closeServer() const;
         int isCommOver();
+        ~Server();
 };
 
 #endif //ASS_TWO_SERVER_H

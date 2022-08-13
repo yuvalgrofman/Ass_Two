@@ -12,6 +12,7 @@ class Server_handler {
         Server_handler(int port = 5555);
         void run();
         void close();
+        ~Server_handler();
 };
 
 #endif //ASS_TWO_SERVER_HANDLER_H

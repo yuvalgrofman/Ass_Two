@@ -74,7 +74,10 @@ FlowerPoint& Server::receiveFlowerPoint() {
 void Server::sendClassification(FlowerPoint &flower, int k, Distance* distance) {
     FlowerType type = dataSpace->predict(k, flower, *(distance));
 
-    char buffer[4096];
+    char buffer[BUFFER_SIZE];
+    for (int i = 0; i < BUFFER_SIZE; i++) {
+        buffer[i] = '\0';
+    }
 
     strcpy(buffer,  FlowerTypeToString(type).c_str());
 
@@ -91,4 +94,8 @@ void Server::closeServer() const {
 
 int Server::isCommOver() {
     return commOverFlag;
+}
+
+Server::~Server() {
+    delete dataSpace;
 }
