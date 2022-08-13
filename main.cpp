@@ -1,6 +1,8 @@
 #include <iostream>
+#include "server/server_handler.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    Server_handler* serverHandler = new Server_handler();
+    serverHandler->run();
+    serverHandler->close();
 }

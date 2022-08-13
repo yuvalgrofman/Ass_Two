@@ -1,5 +1,6 @@
 #include "dataSpace.h"
 #include <vector>
+#include <iostream>
 #include "classifier/flower/flowerSorter.h"
 
 using namespace std;
@@ -29,7 +30,8 @@ FlowerType DataSpace::predict(int k, const FlowerPoint& flower, Distance& distan
     }
 
     for (int i = 0; i < k; i++) {
-        closestNeighboursCount[arr[i]->getType()]++;
+        int a = arr[i]->getType();
+        closestNeighboursCount[a]++;
     }
 
     int max = -1;

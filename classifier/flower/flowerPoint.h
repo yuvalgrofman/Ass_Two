@@ -13,10 +13,10 @@
  */
 class FlowerPoint {
     private:
-        const double width;
-        const double sepalLength;
-        const double sepalWidth;
-        const double petalLength;
+        double width;
+        double sepalLength;
+        double sepalWidth;
+        double petalLength;
 
     public:
         /**
