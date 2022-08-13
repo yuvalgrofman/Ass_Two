@@ -1,7 +1,7 @@
 #ifndef ASS_ONE_EUCLIDEAN_DISTANCE
 #define ASS_ONE_EUCLIDEAN_DISTANCE
 
-#include "distances/distance.h"
+#include "classifier/distances/distance.h"
 #include <cmath>
 
 /**

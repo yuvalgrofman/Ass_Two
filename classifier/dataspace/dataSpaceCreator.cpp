@@ -19,7 +19,7 @@ void DataSpaceCreator::add(const Flower* flower) {
 }
 
 DataSpaceCreator::DataSpaceCreator(FlowerReader& reader) {
-    Flower* ptr =  reader.readFlower();
+    Flower* ptr = reader.readFlower();
     while (ptr != nullptr) {
         add(ptr);
         ptr = reader.readFlower();
