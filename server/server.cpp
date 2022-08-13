@@ -1,12 +1,10 @@
 #include "server/server.h"
-#include "classifier/flower/flowerReader.h"
-#include "classifier/distances/euclideanDistance.h"
-#include "classifier/flower/flowerType.h"
 
 Server::Server(int server_port) {
     this->server_port = server_port;
+    commOverFlag = 0;
 
-    FlowerReader &classifiedReader = *(new FlowerReader("data/flower_data.csv"));
+    FlowerReader &classifiedReader = *(new FlowerReader("../server/data/flower_data.csv"));
     DataSpaceCreator creator = DataSpaceCreator(classifiedReader);
     dataSpace = &creator.makeDataSpace();
 
@@ -40,7 +38,7 @@ Server::Server(int server_port) {
     }
 }
 
-FlowerPoint& Server::receiveFlowerPoint() const {
+FlowerPoint& Server::receiveFlowerPoint() {
     char buffer[4096];
     int expected_data_len = sizeof(buffer);
     int read_bytes = recv(client_sock, buffer, expected_data_len, 0);
@@ -51,13 +49,30 @@ FlowerPoint& Server::receiveFlowerPoint() const {
         // error
     }
     else {
+
+        int seenR = 0;
+        for (int i = 0; i < BUFFER_SIZE; i++) {
+            if (seenR) {
+                buffer[i] = '\0';
+            } else if (buffer[i] == '\r') {
+                seenR = 1;
+            }
+        }
+
         string line(buffer);
-        return *(detectFlowerPoint(line);
+
+        if (!line.compare("END\r")) {
+            commOverFlag = 1;
+            return *(new FlowerPoint(-1, -1, -1, -1));
+        }
+
+        commOverFlag = 0;
+        return *(detectFlowerPoint(line));
     }
 }
 
-void Server::sendClassification(FlowerPoint &flower, int k) {
-    FlowerType type = dataSpace->predict(k, flower, *(new EuclideanDistance()));
+void Server::sendClassification(FlowerPoint &flower, int k, Distance* distance) {
+    FlowerType type = dataSpace->predict(k, flower, *(distance));
 
     char buffer[4096];
 
@@ -72,4 +87,8 @@ void Server::sendClassification(FlowerPoint &flower, int k) {
 
 void Server::closeServer() const {
     close(server_socket);
+}
+
+int Server::isCommOver() {
+    return commOverFlag;
 }
