@@ -24,6 +24,7 @@ class Server {
     public:
         static const int BUFFER_SIZE = 4096;
         Server(int port);
+        void connect();
 
         FlowerPoint& receiveFlowerPoint();
         void sendClassification(FlowerPoint& flower, int k, Distance* distance);

@@ -4,6 +4,10 @@ Server_handler::Server_handler(int port) {
     server = new Server(port);
 }
 
+void Server_handler::connect() {
+    server->connect();
+}
+
 void Server_handler::run() {
     Distance* d = new EuclideanDistance();
 

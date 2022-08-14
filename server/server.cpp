@@ -28,9 +28,12 @@ Server::Server(int server_port) {
     if (listen(server_socket, 5) < 0) {
         perror("error listening to a socket");
     }
+}
 
+void Server::connect() {
     struct sockaddr_in client_sin;
     unsigned int addr_len = sizeof(client_sin);
+
     this->client_sock = accept(server_socket,  (struct sockaddr *) &client_sin,  &addr_len);
 
     if (client_sock < 0) {
@@ -69,6 +72,7 @@ FlowerPoint& Server::receiveFlowerPoint() {
         commOverFlag = 0;
         return *(detectFlowerPoint(line));
     }
+    return *(new FlowerPoint(-1, -1, -1, -1));
 }
 
 void Server::sendClassification(FlowerPoint &flower, int k, Distance* distance) {

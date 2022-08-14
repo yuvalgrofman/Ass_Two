@@ -10,6 +10,7 @@ class Server_handler {
 
     public:
         Server_handler(int port = 5555);
+        void connect();
         void run();
         void close();
         ~Server_handler();
