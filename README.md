@@ -18,6 +18,8 @@ responsible for sending the unclassified flowers to the server,
 receiving the predicted types and writing them to a file. 
 The server and the client communicate using the TCP protocol.
 
+The client is in another github repository and can be found [here](https://github.com/OldRimStalker/Ass_Two_Client).
+
 ## Running The Whole Project
 
 In order to run the project, the user must first run the server according to the instructions in the server's README.md
