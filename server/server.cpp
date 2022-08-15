@@ -19,7 +19,7 @@ Server::Server(int server_port) {
     memset(&sin, 0, sizeof(sin));
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = INADDR_ANY;
-    sin.sin_port = htons(server_port);
+    sin.sin_port = htons(this->server_port);
 
     if (bind(server_socket, (struct sockaddr *) &sin, sizeof(sin)) < 0) {
         perror("error binding socket");
