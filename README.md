@@ -64,7 +64,7 @@ This file contains the following columns (separated by a comma):
 - type - the type of the flower
 
 The server assumes this file is located in Ass-Two/server/data/flower_data.csv.
-
+Please note, that this **csv file must end with a blank line**. Otherwise, the program will not operate properly.
 ## Output
 
 The output of the program is a csv file containing the predicted flower types.
@@ -78,6 +78,15 @@ Subsequently, it sorts the database using merge sort, from closest to farthest (
 Finally, it retrieves the k closest neighbours, finds their most common classification 
 and returns aforementioned classification as the "predicted type".
 It then sends the predicted type to the client, which writes it to a file.
+
+## Additional Info
+
+Firstly, the algorithm currently supports running the client and server on the same machine. 
+In order to change this behavior, the ip address in the client must be changed.
+
+Secondly, This algorithm automatically sets the k value used in the KNN algorithm to 3
+and the distance metric used is the euclidean distance. 
+
 
 ## Authors
 
