@@ -7,7 +7,7 @@
  * @brief The Server_handler class
  *
  * This class is responsible for handling the server.
- * It creates a server, and handles it.
+ * It is a wrapper for the Server class.
  */
 class Server_handler {
 
@@ -19,7 +19,7 @@ class Server_handler {
          * Constructor.
          * @param server - the server to handle.
          */
-        Server_handler(int port = 5555);
+        Server_handler(Server *server);
 
         /**
          * Connect to the client.
@@ -35,11 +35,6 @@ class Server_handler {
          * Close the server.
          */
         void close();
-
-        /**
-         * Destructor.
-         */
-        ~Server_handler();
 };
 
 #endif //ASS_TWO_SERVER_HANDLER_H

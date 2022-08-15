@@ -1,10 +1,10 @@
 #include "server/server.h"
 
-Server::Server(int server_port) {
+Server::Server(string dataSpacePath, int server_port) {
     this->server_port = server_port;
     commOverFlag = false;
 
-    FlowerReader &classifiedReader = *(new FlowerReader("../server/data/flower_data.csv"));
+    FlowerReader &classifiedReader = *(new FlowerReader(dataSpacePath));
     DataSpaceCreator creator = DataSpaceCreator(classifiedReader);
     dataSpace = &creator.makeDataSpace();
 

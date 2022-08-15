@@ -32,8 +32,9 @@ class Server {
         /**
          * Constructor
          * @param port - the port number of the server.
+         * @param dataSpacePath - the path to the data space file.
          */
-        Server(int port);
+        Server(string dataSpacePath = "../server/data/flower_data.csv", int port = 5555);
 
 
         /**
@@ -62,7 +63,7 @@ class Server {
 
         /**
          * Check if the communication is over.
-         * @return
+         * @return true if the communication is over, false otherwise.
          */
         bool isCommOver();
 
@@ -70,8 +71,6 @@ class Server {
          * Destructor.
          */
         ~Server();
-
-
 };
 
 #endif //ASS_TWO_SERVER_H

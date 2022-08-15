@@ -1,7 +1,7 @@
 #include "server_handler.h"
 
-Server_handler::Server_handler(int port) {
-    server = new Server(port);
+Server_handler::Server_handler(Server *server) {
+    this->server = server;
 }
 
 void Server_handler::connect() {
@@ -23,8 +23,4 @@ void Server_handler::run() {
 
 void Server_handler::close() {
     server->closeServer();
-}
-
-Server_handler::~Server_handler() {
-    delete server;
 }
