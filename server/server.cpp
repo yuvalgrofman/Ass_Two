@@ -2,7 +2,7 @@
 
 Server::Server(int server_port) {
     this->server_port = server_port;
-    commOverFlag = 0;
+    commOverFlag = false;
 
     FlowerReader &classifiedReader = *(new FlowerReader("../server/data/flower_data.csv"));
     DataSpaceCreator creator = DataSpaceCreator(classifiedReader);
@@ -65,11 +65,11 @@ FlowerPoint& Server::receiveFlowerPoint() {
         string line(buffer);
 
         if (!line.compare("END\r")) {
-            commOverFlag = 1;
+            commOverFlag = true;
             return *(new FlowerPoint(-1, -1, -1, -1));
         }
 
-        commOverFlag = 0;
+        commOverFlag = false;
         return *(detectFlowerPoint(line));
     }
     return *(new FlowerPoint(-1, -1, -1, -1));
@@ -96,7 +96,7 @@ void Server::closeServer() const {
     close(server_socket);
 }
 
-int Server::isCommOver() {
+bool Server::isCommOver() {
     return commOverFlag;
 }
 
