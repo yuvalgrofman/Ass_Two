@@ -84,7 +84,8 @@ It then sends the predicted type to the client, which writes it to a file.
 ## Additional Info
 
 Firstly, the algorithm currently supports running the client and server on the same machine. 
-In order to change this behavior, the ip address in the client must be changed.
+In order to change this behavior, the ip address in the client must be changed. 
+Additionally, the port number used for communication is 5555. 
 
 Secondly, This algorithm automatically sets the k value used in the KNN algorithm to 3
 and the distance metric used is the euclidean distance. 
