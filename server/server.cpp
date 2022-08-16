@@ -46,10 +46,11 @@ FlowerPoint& Server::receiveFlowerPoint() {
     int expected_data_len = sizeof(buffer);
     int read_bytes = recv(client_sock, buffer, expected_data_len, 0);
     if (read_bytes == 0) {
-        // connection is closed
+        commOverFlag = true;
+        return *(new FlowerPoint(-1, -1, -1, -1));
     }
     else if (read_bytes < 0) {
-        // error
+        perror("error receiving flower point");
     }
     else {
 
